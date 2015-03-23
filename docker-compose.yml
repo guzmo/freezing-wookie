@@ -2,6 +2,8 @@ mongodb:
     image: dockerfile/mongodb
     expose: 
      -  27017
+    ports:
+     -  27017
     volumes:
      -  /var/mongo/db:/data/db
     restart: always
@@ -59,6 +61,7 @@ proxy:
      - 80:80
     links:
      -  googleauth
+     -  sitewatcher
     volumes:
      - proxy/nginx/nginx.conf:/etc/nginx.conf
      - proxy/nginx/sites-enabled:/etc/nginx/sites-enabled
